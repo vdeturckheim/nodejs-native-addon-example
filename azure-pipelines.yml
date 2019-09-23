@@ -43,5 +43,42 @@ stages:
             workingDirectory: $(dir)
           - script: node test.js
             workingDirectory: $(dir)
-
-            
+      - job: Windows
+        pool:
+          vmImage: 'vs2017-win2016'
+        strategy:
+          matrix:
+            node_4_x:
+              node_version: 4.x
+              dir: nan
+            node_5_x:
+              node_version: 5.x
+              dir: nan
+            node_6_13_x:
+              node_version: 6.13.x
+              dir: nan
+            node_7_x:
+              node_version: 7.x
+              dir: nan
+            node_8_10_x:
+              node_version: 8.10.x
+              dir: nan
+            node_9_10_x:
+              node_version: 9.10.x
+              dir: nan
+            node_10_x:
+              node_version: 10.x # napi
+              dir: napi
+        steps:
+          - checkout: self
+            clean: true
+            submodules: recursive
+          - task: NodeTool@0
+            inputs:
+              versionSpec: $(node_version)
+          - script: npm config set python python2.7
+          - script: npm config set msvs_version 2017
+          - script: npm install # this will build the bindings
+            workingDirectory: $(dir)
+          - script: node test.js
+            workingDirectory: $(dir)
