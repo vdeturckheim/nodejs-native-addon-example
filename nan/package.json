@@ -1,0 +1,18 @@
+{
+  "name": "nan-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "gypfile": true,
+  "private": true,
+  "dependencies": {
+    "nan": "^2.14.0",
+    "node-gyp": "^5.0.3"
+  }
+}
