@@ -82,7 +82,7 @@ stages:
             workingDirectory: $(dir)
           - script: node test.js
             workingDirectory: $(dir)
-      - job: Linux-glibc
+      - job: Linux_glibc
         pool:
           vmImage: 'ubuntu-latest'
         strategy:
@@ -113,7 +113,7 @@ stages:
             clean: true
             submodules: recursive
           - script: docker build . -f dockerfiles/many.Dockerfile --build-arg "NODE_VERSION=$(node_version)" --build-arg  "DIR=$(dir)"
-      - job: Linux-muslc
+      - job: Linux_muslc
         pool:
           vmImage: 'ubuntu-latest'
         strategy:
