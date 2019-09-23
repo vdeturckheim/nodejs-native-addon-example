@@ -1,7 +1,5 @@
 #include <nan.h>
 
-#define MAX_DEPTH 5
-
 using namespace v8;
 using namespace std;
 
@@ -54,7 +52,7 @@ void get_string_length(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     Local<Context>  context     = isolate->GetCurrentContext();
 
     if (info.Length() < 1) {
-        Nan::ThrowTypeError("inspect expect 1 argument");
+        Nan::ThrowTypeError("get_string_length expect 1 argument");
         return;
     }
 
@@ -66,6 +64,7 @@ void get_string_length(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     Local<Number> response = Nan::New(static_cast<uint32_t>(result->length()));
     info.GetReturnValue().Set(response);
 }
+
 NAN_MODULE_INIT(Init) {
         Nan::Set(target,
                  Nan::New<String>("get_string_length").ToLocalChecked(),
