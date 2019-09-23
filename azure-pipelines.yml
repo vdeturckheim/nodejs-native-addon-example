@@ -108,9 +108,9 @@ stages:
             node_10_16.3:
               node_version: 10.16.3 # napi
               dir: napi
-          steps:
-            - checkout: self
-              clean: true
-              submodules: recursive
-            - script: docker build . -f dockerfiles/many.Dockerfile --build-arg "NODE_VERSION=$(node_version)" --build-arg  "DIR=$(dir)"
-            - script: docker build . -f dockerfiles/alpine.Dockerfile --build-arg "NODE_VERSION=$(node_version)" --build-arg  "DIR=$(dir)"
+        steps:
+          - checkout: self
+            clean: true
+            submodules: recursive
+          - script: docker build . -f dockerfiles/many.Dockerfile --build-arg "NODE_VERSION=$(node_version)" --build-arg  "DIR=$(dir)"
+          - script: docker build . -f dockerfiles/alpine.Dockerfile --build-arg "NODE_VERSION=$(node_version)" --build-arg  "DIR=$(dir)"
