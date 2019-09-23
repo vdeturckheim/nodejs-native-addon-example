@@ -11,6 +11,6 @@ RUN apk add --update \
 
 WORKDIR /app/build
 COPY . .
-RUN cd ${DIR}
+WORKDIR /app/build/${DIR}
 RUN npm install
-RUN npm t
+RUN node test

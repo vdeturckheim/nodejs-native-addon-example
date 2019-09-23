@@ -11,7 +11,6 @@ RUN tar -xvf "node-v${NODE_VERSION}-linux-x64.tar.gz"
 RUN ln -s "/node-v${NODE_VERSION}-linux-x64/bin/node" /bin/node
 RUN ln -s "/node-v${NODE_VERSION}-linux-x64/bin/npm" /bin/npm
 
-WORKDIR /app/build/
-RUN cd ${DIR}
+WORKDIR /app/build/${DIR}
 RUN npm install
-RUN npm t
+RUN node test
